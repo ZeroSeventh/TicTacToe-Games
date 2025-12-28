@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="เกม Tic Tac Toe สุดอลังการ พร้อม background จักรวาลสวยงาม">
+    <meta name="description" content="เกม Tic Tac Toe สุดอลังการ พร้อมโหมด AI อัจฉริยะ">
     <title>🎮 Tic Tac Toe - Galaxy Edition</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,14 +11,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Animated Stars Background -->
     <div class="stars-container">
         <div class="stars"></div>
         <div class="stars2"></div>
         <div class="stars3"></div>
     </div>
     
-    <!-- Floating Particles -->
     <div class="particles">
         <div class="particle"></div>
         <div class="particle"></div>
@@ -30,12 +28,20 @@
         <div class="particle"></div>
     </div>
 
-    <!-- Main Game Container -->
     <div class="game-container">
         <h1 class="title">
             <span class="glow">TIC TAC TOE</span>
             <span class="subtitle">✨ Galaxy Edition ✨</span>
         </h1>
+
+        <div class="mode-control">
+            <span class="mode-label">👤 2 คน</span>
+            <label class="switch">
+                <input type="checkbox" id="ai-mode-toggle" checked>
+                <span class="slider"></span>
+            </label>
+            <span class="mode-label ai-text">🤖 บอท</span>
+        </div>
         
         <div class="status-container">
             <div id="status" class="status">ผู้เล่น <span class="player-x">X</span> เริ่มเกม!</div>
@@ -74,7 +80,6 @@
         </button>
     </div>
 
-    <!-- Winner Modal -->
     <div id="winner-modal" class="modal">
         <div class="modal-content">
             <div class="confetti"></div>
