@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="เกม Tic Tac Toe สุดอลังการ พร้อม background จักรวาลสวยงาม">
+    <title>🎮 Tic Tac Toe - Galaxy Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Stars Background -->
+    <div class="stars-container">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+    
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Main Game Container -->
+    <div class="game-container">
+        <h1 class="title">
+            <span class="glow">TIC TAC TOE</span>
+            <span class="subtitle">✨ Galaxy Edition ✨</span>
+        </h1>
+        
+        <div class="status-container">
+            <div id="status" class="status">ผู้เล่น <span class="player-x">X</span> เริ่มเกม!</div>
+        </div>
+
+        <div class="board-wrapper">
+            <div class="board-glow"></div>
+            <div id="board" class="board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+        </div>
+
+        <div class="score-container">
+            <div class="score-box">
+                <span class="score-label">Player X</span>
+                <span id="score-x" class="score-value player-x">0</span>
+            </div>
+            <div class="score-divider">⚔️</div>
+            <div class="score-box">
+                <span class="score-label">Player O</span>
+                <span id="score-o" class="score-value player-o">0</span>
+            </div>
+        </div>
+
+        <button id="reset-btn" class="reset-btn">
+            <span class="btn-text">🔄 เริ่มเกมใหม่</span>
+            <span class="btn-glow"></span>
+        </button>
+    </div>
+
+    <!-- Winner Modal -->
+    <div id="winner-modal" class="modal">
+        <div class="modal-content">
+            <div class="confetti"></div>
+            <h2 id="winner-text" class="winner-text">🎉 ผู้ชนะ! 🎉</h2>
+            <button id="play-again-btn" class="play-again-btn">เล่นอีกครั้ง</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

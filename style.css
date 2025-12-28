@@ -1,0 +1,558 @@
+/* =====================================================
+   🌌 Tic Tac Toe - Galaxy Edition
+   Premium Cosmic Theme with Glassmorphism
+   ===================================================== */
+
+/* CSS Variables for theming */
+:root {
+    --primary-purple: #9d4edd;
+    --primary-blue: #3a86ff;
+    --primary-cyan: #00f5d4;
+    --primary-pink: #ff6b9d;
+    --dark-bg: #0a0a1a;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-light: #ffffff;
+    --text-glow: #e0aaff;
+    --player-x: #ff6b6b;
+    --player-o: #4ecdc4;
+    --win-glow: #ffd700;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 50%, #0d0d2b 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-light);
+    position: relative;
+}
+
+/* =====================================================
+   ✨ Animated Stars Background
+   ===================================================== */
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.stars, .stars2, .stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.stars {
+    background: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 230px 80px, #fff, transparent),
+        radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 350px 200px, #fff, transparent),
+        radial-gradient(2px 2px at 420px 50px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 500px 180px, #fff, transparent),
+        radial-gradient(2px 2px at 580px 90px, rgba(255,255,255,0.9), transparent);
+    background-size: 600px 300px;
+    animation: starsMove 80s linear infinite;
+}
+
+.stars2 {
+    background: 
+        radial-gradient(1px 1px at 100px 200px, var(--primary-cyan), transparent),
+        radial-gradient(2px 2px at 200px 100px, var(--primary-purple), transparent),
+        radial-gradient(1px 1px at 300px 250px, var(--primary-blue), transparent),
+        radial-gradient(2px 2px at 400px 50px, var(--primary-pink), transparent),
+        radial-gradient(1px 1px at 500px 300px, var(--primary-cyan), transparent);
+    background-size: 550px 350px;
+    animation: starsMove 100s linear infinite;
+    opacity: 0.7;
+}
+
+.stars3 {
+    background: 
+        radial-gradient(3px 3px at 150px 150px, #fff, transparent),
+        radial-gradient(3px 3px at 350px 250px, var(--text-glow), transparent),
+        radial-gradient(4px 4px at 550px 100px, #fff, transparent);
+    background-size: 700px 400px;
+    animation: starsTwinkle 3s ease-in-out infinite, starsMove 120s linear infinite;
+}
+
+@keyframes starsMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100%); }
+}
+
+@keyframes starsTwinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* =====================================================
+   🫧 Floating Particles
+   ===================================================== */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--primary-purple), transparent);
+    animation: float 15s infinite;
+    opacity: 0.6;
+}
+
+.particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 12s; }
+.particle:nth-child(2) { left: 20%; top: 80%; animation-delay: 2s; animation-duration: 18s; background: radial-gradient(circle, var(--primary-cyan), transparent); }
+.particle:nth-child(3) { left: 60%; top: 40%; animation-delay: 4s; animation-duration: 14s; }
+.particle:nth-child(4) { left: 80%; top: 60%; animation-delay: 1s; animation-duration: 16s; background: radial-gradient(circle, var(--primary-pink), transparent); }
+.particle:nth-child(5) { left: 30%; top: 10%; animation-delay: 3s; animation-duration: 20s; background: radial-gradient(circle, var(--primary-blue), transparent); }
+.particle:nth-child(6) { left: 70%; top: 90%; animation-delay: 5s; animation-duration: 15s; }
+.particle:nth-child(7) { left: 90%; top: 30%; animation-delay: 2.5s; animation-duration: 17s; background: radial-gradient(circle, var(--primary-cyan), transparent); }
+.particle:nth-child(8) { left: 50%; top: 70%; animation-delay: 1.5s; animation-duration: 13s; background: radial-gradient(circle, var(--primary-purple), transparent); }
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0;
+    }
+    10% { opacity: 0.6; }
+    50% {
+        transform: translateY(-100px) translateX(50px) scale(1.5);
+        opacity: 0.8;
+    }
+    90% { opacity: 0.6; }
+}
+
+/* =====================================================
+   🎮 Game Container
+   ===================================================== */
+.game-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 40px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 30px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        inset 0 0 100px rgba(157, 78, 221, 0.1);
+}
+
+/* =====================================================
+   🏷️ Title
+   ===================================================== */
+.title {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.glow {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary-purple), var(--primary-cyan), var(--primary-pink));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(157, 78, 221, 0.5);
+    filter: drop-shadow(0 0 20px rgba(157, 78, 221, 0.3));
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: var(--text-glow);
+    letter-spacing: 3px;
+    opacity: 0.8;
+}
+
+/* =====================================================
+   📊 Status
+   ===================================================== */
+.status-container {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, rgba(157, 78, 221, 0.2), rgba(0, 245, 212, 0.2));
+    border-radius: 50px;
+    border: 1px solid var(--glass-border);
+}
+
+.status {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.player-x {
+    color: var(--player-x);
+    text-shadow: 0 0 15px var(--player-x);
+    font-weight: 700;
+}
+
+.player-o {
+    color: var(--player-o);
+    text-shadow: 0 0 15px var(--player-o);
+    font-weight: 700;
+}
+
+/* =====================================================
+   🎲 Game Board
+   ===================================================== */
+.board-wrapper {
+    position: relative;
+    padding: 20px;
+}
+
+.board-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(157, 78, 221, 0.3), transparent 70%);
+    filter: blur(40px);
+    z-index: -1;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    border: 2px solid var(--glass-border);
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.2));
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.cell::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+}
+
+.cell:hover:not(.taken) {
+    transform: scale(1.05);
+    background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(0,0,0,0.3));
+    border-color: var(--primary-purple);
+    box-shadow: 
+        0 0 20px rgba(157, 78, 221, 0.4),
+        inset 0 0 20px rgba(157, 78, 221, 0.1);
+}
+
+.cell:hover::before {
+    left: 100%;
+}
+
+.cell.x {
+    color: var(--player-x);
+    text-shadow: 
+        0 0 20px var(--player-x),
+        0 0 40px var(--player-x);
+    animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.cell.o {
+    color: var(--player-o);
+    text-shadow: 
+        0 0 20px var(--player-o),
+        0 0 40px var(--player-o);
+    animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.cell.taken {
+    cursor: not-allowed;
+}
+
+.cell.win {
+    animation: winPulse 0.5s ease-in-out infinite alternate;
+    border-color: var(--win-glow);
+    box-shadow: 0 0 30px var(--win-glow);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes winPulse {
+    from { 
+        transform: scale(1);
+        box-shadow: 0 0 20px var(--win-glow);
+    }
+    to { 
+        transform: scale(1.05);
+        box-shadow: 0 0 40px var(--win-glow), 0 0 60px var(--win-glow);
+    }
+}
+
+/* =====================================================
+   🏆 Score Container
+   ===================================================== */
+.score-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+}
+
+.score-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.score-label {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    letter-spacing: 1px;
+}
+
+.score-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.score-divider {
+    font-size: 1.5rem;
+}
+
+/* =====================================================
+   🔘 Buttons
+   ===================================================== */
+.reset-btn {
+    position: relative;
+    padding: 15px 40px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(157, 78, 221, 0.3);
+}
+
+.reset-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(157, 78, 221, 0.4);
+}
+
+.reset-btn:active {
+    transform: translateY(0);
+}
+
+.btn-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.reset-btn:hover .btn-glow {
+    left: 100%;
+}
+
+/* =====================================================
+   🎊 Winner Modal
+   ===================================================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    position: relative;
+    padding: 50px 70px;
+    background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(0, 245, 212, 0.3));
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    border: 2px solid var(--glass-border);
+    text-align: center;
+    animation: scaleIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 
+        0 0 50px rgba(157, 78, 221, 0.5),
+        0 0 100px rgba(0, 245, 212, 0.3);
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+.winner-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, var(--win-glow), var(--primary-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: winnerPulse 1s ease-in-out infinite;
+}
+
+@keyframes winnerPulse {
+    0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
+    50% { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8)); }
+}
+
+.play-again-btn {
+    padding: 15px 50px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark-bg);
+    background: linear-gradient(135deg, var(--win-glow), #ffb347);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+}
+
+.play-again-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+}
+
+/* =====================================================
+   📱 Responsive Design
+   ===================================================== */
+@media (max-width: 500px) {
+    .game-container {
+        padding: 25px;
+        margin: 10px;
+        gap: 20px;
+    }
+    
+    .glow {
+        font-size: 2rem;
+    }
+    
+    .cell {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+    }
+    
+    .status {
+        font-size: 1rem;
+    }
+    
+    .modal-content {
+        padding: 30px 40px;
+        margin: 20px;
+    }
+    
+    .winner-text {
+        font-size: 1.5rem;
+    }
+}
