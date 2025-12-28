@@ -1,5 +1,7 @@
 # 🎮 Tic Tac Toe - Galaxy Edition
 
+[ไทย] | [English](#english-description)
+
 โปรเจกต์เกม Tic Tac Toe (โอเอกซ์) ในธีมอวกาศสุดพรีเมียมที่รวมความสวยงามของ **Glassmorphism**, **Dynamic Animations** และการเขียนโค้ดที่สะอาดเข้าไว้ด้วยกัน
 
 ---
@@ -47,18 +49,28 @@
 
 ---
 
-## 🚀 วิธีการใช้งาน (How to Use)
+<a name="english-description"></a>
+## 🚀 English Description
 
-1.  Clone หรือ Download โปรเจกต์นี้ลงในเครื่องของคุณ
-2.  เปิดไฟล์ `index.html` ด้วยเว็บเบราว์เซอร์ใดก็ได้ (Chrome, Firefox, Safari)
-3.  สนุกกับเกมได้ทันที!
+A premium, high-aesthetic Tic Tac Toe web game featuring a stunning cosmic theme, built with pure HTML, CSS, and JavaScript.
+
+### ✨ Key Features
+- **🌌 Dynamic Galaxy Background:** 3-layer parallax starfield with floating cosmic particles.
+- **💎 Glassmorphism UI:** Modern, translucent interface with vibrant glow effects and frosted glass textures.
+- **🎯 Real-time Scoreboard:** Keeps track of Player X and Player O wins throughout the session.
+- **🏆 Interactive Winner Modal:** Stylish victory announcement with smooth scale-in animations.
+- **📱 Fully Responsive:** Optimized layout for all screen sizes, from mobile phones to ultra-wide monitors.
+- **🔄 Micro-interactions:** Satisfying animations for cell selection, hover effects, and page transitions.
+
+### 🛠️ Tech Stack
+- **HTML5:** Semantic markup and multi-layered backdrop organization.
+- **CSS3:** Advanced animations, grid layouts, and custom property (variables) management.
+- **JavaScript (ES6+):** Clean, modular logic handling game states and UI updates.
+
+### 📸 Design Preview
+- **Player X:** Neon Red/Pink glow aesthetic.
+- **Player O:** Electric Cyan/Teal glow aesthetic.
+- **Winning Moment:** Gold-pulsing highlight on the winning combination.
 
 ---
-
-## 📸 พรีวิวดีไซน์
--   **X:** ใช้สีแดงอมชมพูพร้อมแสงฟุ้ง (Neon Red Glow)
--   **O:** ใช้สีฟ้าอมเขียว (Neon Cyan Glow)
--   **Win:** เมื่อชนะ ช่องที่ชนะจะมีการขยายตัวและเปล่งแสงสีทอง (Gold Pulse)
-
----
-จัดทำขึ้นเพื่อเป็นตัวอย่างการสร้างเว็บแอปพลิเคชันที่เน้น **Rich Aesthetics** และ **User Experience** ที่ดี
+Created with ❤️ to showcase modern web design and front-end development skills.
